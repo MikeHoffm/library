@@ -1,0 +1,10 @@
+.cards {
+    border: 3px solid blue;
+    padding: 10px;
+    text-align: left;
+}
+
+#card-container {
+    border: 3px solid red;
+    display: grid;
+}
