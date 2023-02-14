@@ -2,7 +2,7 @@ const myLibrary = [];
 const cardContainer = document.getElementById('card-container');
 
 function Book(bookTitle, bookAuthor, bookPages) {
-  this.name = bookTitle;
+  this.title = bookTitle;
   this.author = bookAuthor;
   this.pages = bookPages;
 }
@@ -33,25 +33,39 @@ myLibrary.push(book1);
 myLibrary.push(book2);
 myLibrary.push(book3);
 
+// make function that will automatically create a div (with the ".cards" class set on it
+// and append it to the card-container div
+
 // create a function that loops through
 // mylibrary and creates a card for each individual object
 
 function displayBook() {
-  const cardTitle = document.getElementById('title-card');
-  const cardAuthor = document.getElementById('author-card');
-  const cardPages = document.getElementById('pages-card');
-
   for (let i = 0; i < myLibrary.length; i++) {
-    cardTitle.innerHTML = myLibrary[i].name;
-    cardAuthor.innerHTML = myLibrary[i].author;
-    cardPages.innerHTML = myLibrary[i].pages;
+    const newCard = document.createElement('div');
+    newCard.classList.add('cards');
+    cardContainer.appendChild(newCard);
+
+    const cardTitle = document.createElement('p');
+    cardTitle.classList.add('title-card');
+    newCard.appendChild(cardTitle);
+    cardTitle.innerText = myLibrary[i].title;
+
+    const cardAuthor = document.createElement('p');
+    cardAuthor.classList.add('author-card');
+    newCard.appendChild(cardAuthor);
+    cardAuthor.innerText = myLibrary[i].author;
+
+    const cardPages = document.createElement('p');
+    cardPages.classList.add('pages-card');
+    newCard.appendChild(cardPages);
+    cardPages.innerText = `Pages: ${myLibrary[i].pages}`;
   }
 }
 
-// make function that will automatically create a div (with the ".cards" class set on it
-// and append it to the card-container div
-// add this function into the displayBook function
-function createCard() {
-  const newCard = document.createElement('div');
-  newCard.setAttribute('class', 'cards');
-}
+// CREATE A BUTTON TO MAKE THE FORM POP UP, ONCE INFO IS ENTERED THE FORM
+// DISAPPEARS with element.style.display = 'none', and element.style.display = 'block';
+const newBook = document.getElementById('new-book');
+
+newBook.addEventListener('click', () => {
+
+});
