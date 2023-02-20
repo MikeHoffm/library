@@ -47,12 +47,19 @@ table {
 	border-spacing: 0;
 }
 
+* {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
 /* PAGE LAYOUT */
 body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: .1fr 1fr .2fr;
-    gap: 1em;
     border: 3px solid blue;
 }
 
@@ -65,20 +72,29 @@ header {
 }
 
 .branding {
-    border: 4px solid black;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    font-size: 1.5rem;
+    font-weight: bolder;
+    grid-template-columns: .8fr 2fr;
+    justify-items: center;
     align-items: center;
 }
 
+.login {
+    width: 8rem;
+    height: 3rem;
+    font-size: 1rem;
+}
 
 /* MAIN LAYOUT */
 main {
     border: 5px solid orange;
     display: grid;
     grid-template-rows: .1fr 1fr;
-    gap: 1em;
+    gap: 1rem;
+    padding: 1rem;
     grid-row: 2/4;
+    position: relative;
 }
 
 /* BUTTON FIELD */
@@ -103,18 +119,43 @@ main {
 #form-container {
     border: 4px solid brown;
     position: absolute; 
-    display: flex;
     justify-content: center;
-    top: 30%;
-    right: 40%;
-    width: 20%;
-    height: 40%;
+    top: 1;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 1rem;
+    width: 250px;
+    height: 300px;
+    box-shadow: 0 0 0 100vw hsla(278, 48%, 5%, 0.4);
+}
+
+#form-container > h3 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+#close-form {
+    background-color: red;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
 }
 
 form {
     border: 3px solid green;
     display: grid;
     gap: 10px;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+input, .submit {
+    height: 2.5rem;
+    width: 15rem;
+    text-align: center;
+    font-size: 1rem;
 }
 
 /* CARD CONTAINER */
@@ -122,13 +163,25 @@ form {
     grid-row: 2/4;
     border: 3px solid red;
     display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
+    gap: 10px;
 }
 
 .cards {
     border: 3px solid blue;
     padding: 10px;
-    text-align: left;
+    text-align: center;
+    height: 200px;
+    width: 210px;
+    display: grid;
 }
+
+.remove-button {
+    font-size: 1rem;
+    border: none;
+}
+
 
 /* FOOTER */
 footer {
@@ -140,3 +193,53 @@ footer {
     padding: 1em;
 }
 
+.footer-link {
+    font-weight: bolder;
+    color: #4A4063;
+}
+/* COLOR STYLING */
+
+header {
+    background-color: #4A4063;
+    color: white;
+}
+
+main {
+    background-image: linear-gradient(#BFACC8, white);
+}
+
+#new-book, .submit, #close-form, .remove-button {
+   background-color: #643A71;
+}
+
+#new-book:hover, .submit:hover,
+#close-form:hover, .remove-button:hover
+ {
+    color: white;
+    background-color: #401e4b
+}
+
+#form-container, .cards {
+    background-color: #BFACC8;
+}
+
+input, button {
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+
+/* BORDER STYLING - RADIUS */
+
+.login,
+#form-container,
+.submit,
+input,
+.cards,
+.remove-button {
+    border-radius: 16px;
+}

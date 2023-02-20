@@ -1,46 +1,42 @@
+/* Globally Accessible Variables / Arrays etc */
 const myLibrary = [];
 const cardContainer = document.getElementById('card-container');
+/* Form Variables */
+const formContainer = document.getElementById('form-container');
+formContainer.style.display = 'none';
+const formSubmit = document.querySelector('.submit');
 
+
+// Object Constructor Function for Books
 function Book(bookTitle, bookAuthor, bookPages) {
   this.title = bookTitle;
   this.author = bookAuthor;
   this.pages = bookPages;
 }
 
-// get user input for book title, pages, author
 
-// const userPrompt = prompt("Enter a book, it's author, and pages", 'e.g. The Hobbit, Tolkein, 400');
-
-// split users book info up into an array
-// const inputArray = userPrompt.split(',');
-
+// Collect user input from form 
+// Push through Object constructor & store in myLibrary
 function addBookToLibrary() {
-  // taking the users input (thats been split into an array with inputArray)
-  // add book title, author and pages into the mylibrary array
+  let titleValue = document.getElementById('title').value;
+  let authorValue = document.getElementById('author').value;
+  let pagesValue = document.getElementById('pages').value;
 
-  // myLibrary.push(new Book(inputArray[0], inputArray[1], inputArray[2]));
+  myLibrary.push(new Book(titleValue, authorValue, pagesValue));
+  console.log(myLibrary);
 }
 
-// step 3
-// create book objects to populate display
-// push these objects into the mylibrary array
+// Clears the card container of any individual cards
+function clearDisplay() {
+  while(cardContainer.firstChild) {
+   cardContainer.removeChild(cardContainer.firstChild);
+  }
+   }
 
-const book1 = new Book('hobbit', 'tolk', '300');
-const book2 = new Book('Born a crime', 'trevor', '200');
-const book3 = new Book('Modern Love', 'aziz', '150');
-
-myLibrary.push(book1);
-myLibrary.push(book2);
-myLibrary.push(book3);
-
-// make function that will automatically create a div (with the ".cards" class set on it
-// and append it to the card-container div
-
-// create a function that loops through
-// mylibrary and creates a card for each individual object
-
+// Creates individual cards based on current content myLibrary array
 function displayBook() {
-  for (let i = 0; i < myLibrary.length; i++) {
+  for(let i = 0; i < myLibrary.length; i++) {
+  
     const newCard = document.createElement('div');
     newCard.classList.add('cards');
     cardContainer.appendChild(newCard);
@@ -48,24 +44,86 @@ function displayBook() {
     const cardTitle = document.createElement('p');
     cardTitle.classList.add('title-card');
     newCard.appendChild(cardTitle);
-    cardTitle.innerText = myLibrary[i].title;
+    cardTitle.innerText = `Title: ${myLibrary[i].title}`
 
     const cardAuthor = document.createElement('p');
     cardAuthor.classList.add('author-card');
     newCard.appendChild(cardAuthor);
-    cardAuthor.innerText = myLibrary[i].author;
+    cardAuthor.innerText = `Author: ${myLibrary[i].author}`
 
     const cardPages = document.createElement('p');
     cardPages.classList.add('pages-card');
     newCard.appendChild(cardPages);
-    cardPages.innerText = `Pages: ${myLibrary[i].pages}`;
+    cardPages.innerText = `${myLibrary[i].pages} pages`
+
+    //Set data attribute on the newly created card, corresponding with it's array index
+    newCard.dataset.index = i;
+    let bookIndex = newCard.dataset.index;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.setAttribute('class','remove-button');
+    newCard.appendChild(removeBtn);
+    removeBtn.innerText = 'Remove Book';
+    let btnIndex = bookIndex;
+
+    // Access the index of the button pressed, remove the corresponding book from library array & update display
+    removeBtn.addEventListener('click', (event) => { 
+      myLibrary.splice(btnIndex,1);
+      console.log(myLibrary);
+      clearDisplay();
+      displayBook();
+    })
+
+
   }
+  }
+
+ // Add New Book Button - Display a clear form each button press
+const addBook = document.getElementById('new-book');
+
+addBook.addEventListener('click', () => {
+  document.getElementById('form').reset();
+  formContainer.style.display = 'block';
+});
+
+// Remove form from DOM display
+function removeForm() {
+  formContainer.style.display = 'none';
 }
 
-// CREATE A BUTTON TO MAKE THE FORM POP UP, ONCE INFO IS ENTERED THE FORM
-// DISAPPEARS with element.style.display = 'none', and element.style.display = 'block';
-const newBook = document.getElementById('new-book');
+//Close form without submitting button
+let closeBtn = document.getElementById('close-form');
+closeBtn.addEventListener('click', ()=> {
+  removeForm();
+})
 
-newBook.addEventListener('click', () => {
+// When submit is pressed, add book values to library array
+// remove form from display
+// display the new book card in the dom
+formSubmit.addEventListener('click', () => {
+  event.preventDefault();
+  addBookToLibrary();
+  removeForm();
+  clearDisplay();
+  displayBook();
 
+  
 });
+
+// Add a button to each books display to remove the book from the library
+
+//get index of the button being pressed
+// get the book with the corresponding index
+// remove the book from DOM, whilst removing it from array
+//clear the display, then update with displayBook() with new array
+// update the display with new array
+
+function getBtnIndex(index) {
+//on function call, select the button with the specified index
+console.log(button);
+}
+
+function removeBook() {
+  //on function call, remove corresponding book and array item
+  console.log(btnIndex);
+}
