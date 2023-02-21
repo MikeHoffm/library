@@ -3,28 +3,45 @@ const myLibrary = [];
 const cardContainer = document.getElementById('card-container');
 /* Form Variables */
 const formContainer = document.getElementById('form-container');
-formContainer.style.display = 'none';
 const formSubmit = document.querySelector('.submit');
 
 
+// Remove form from DOM display
+function removeForm() {
+  formContainer.style.display = 'none';
+}
+
+//Start page with form hidden
+removeForm();
+
 // Object Constructor Function for Books
-function Book(bookTitle, bookAuthor, bookPages) {
+function Book(bookTitle, bookAuthor, bookPages, readStatus) {
   this.title = bookTitle;
   this.author = bookAuthor;
   this.pages = bookPages;
+  this.read = readStatus;
 }
+
+//TOGGLE FUNCTION
+Book.prototype.toggleStatus = function() {
+  if(this.read === true) {
+    this.read = false;
+  } else {
+    this.read = true;
+  }}
 
 
 // Collect user input from form 
 // Push through Object constructor & store in myLibrary
 function addBookToLibrary() {
-  let titleValue = document.getElementById('title').value;
-  let authorValue = document.getElementById('author').value;
-  let pagesValue = document.getElementById('pages').value;
-
-  myLibrary.push(new Book(titleValue, authorValue, pagesValue));
-  console.log(myLibrary);
+  let title = document.getElementById('title').value;
+  let author = document.getElementById('author').value;
+  let pages = document.getElementById('pages').value;
+  let read = document.getElementById('read-status').checked;
+ 
+  myLibrary.push(new Book(title, author, pages, read));
 }
+
 
 // Clears the card container of any individual cards
 function clearDisplay() {
@@ -67,16 +84,35 @@ function displayBook() {
     let btnIndex = bookIndex;
 
     // Access the index of the button pressed, remove the corresponding book from library array & update display
-    removeBtn.addEventListener('click', (event) => { 
+    removeBtn.addEventListener('click', () => { 
       myLibrary.splice(btnIndex,1);
       console.log(myLibrary);
       clearDisplay();
       displayBook();
     })
 
+     //Create Ability to toggle read status 
+    const toggleRead = document.createElement('button');
+    toggleRead.setAttribute('class','toggle-read')
+    newCard.appendChild(toggleRead);
 
+    if (myLibrary[i].read === true) {
+      toggleRead.innerText = 'READ';
+    }
+     else { toggleRead.innerText= 'UNREAD'
+    }
+
+    toggleRead.addEventListener('click', ()=> {
+       myLibrary[i].toggleStatus();
+      if (myLibrary[i].read === false){
+        toggleRead.innerText = 'UNREAD';
+      } else {
+        toggleRead.innerText = 'READ';
+      }
+    })
+  
   }
-  }
+  } 
 
  // Add New Book Button - Display a clear form each button press
 const addBook = document.getElementById('new-book');
@@ -85,11 +121,6 @@ addBook.addEventListener('click', () => {
   document.getElementById('form').reset();
   formContainer.style.display = 'block';
 });
-
-// Remove form from DOM display
-function removeForm() {
-  formContainer.style.display = 'none';
-}
 
 //Close form without submitting button
 let closeBtn = document.getElementById('close-form');
@@ -106,24 +137,4 @@ formSubmit.addEventListener('click', () => {
   removeForm();
   clearDisplay();
   displayBook();
-
-  
 });
-
-// Add a button to each books display to remove the book from the library
-
-//get index of the button being pressed
-// get the book with the corresponding index
-// remove the book from DOM, whilst removing it from array
-//clear the display, then update with displayBook() with new array
-// update the display with new array
-
-function getBtnIndex(index) {
-//on function call, select the button with the specified index
-console.log(button);
-}
-
-function removeBook() {
-  //on function call, remove corresponding book and array item
-  console.log(btnIndex);
-}
