@@ -1,9 +1,12 @@
 /* Globally Accessible Variables / Arrays etc */
 const myLibrary = [];
 const cardContainer = document.getElementById('card-container');
+const addBook = document.getElementById('new-book');
+
 /* Form Variables */
 const formContainer = document.getElementById('form-container');
 const formSubmit = document.querySelector('.submit');
+let closeBtn = document.getElementById('close-form');
 
 
 // Remove form from DOM display
@@ -115,15 +118,12 @@ function displayBook() {
   } 
 
  // Add New Book Button - Display a clear form each button press
-const addBook = document.getElementById('new-book');
-
-addBook.addEventListener('click', () => {
+  addBook.addEventListener('click', () => {
   document.getElementById('form').reset();
   formContainer.style.display = 'block';
 });
 
 //Close form without submitting button
-let closeBtn = document.getElementById('close-form');
 closeBtn.addEventListener('click', ()=> {
   removeForm();
 })

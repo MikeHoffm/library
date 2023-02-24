@@ -47,7 +47,7 @@ table {
 	border-spacing: 0;
 }
 
-* {
+*, h1 {
     font-family: 'Lexend Deca', sans-serif;
 }
 
@@ -59,7 +59,7 @@ a {
 body {
     min-height: 100vh;
     display: grid;
-    grid-template-rows: .1fr 1fr .2fr;
+    grid-template-rows: .13fr 1fr .2fr;
    /*  border: 3px solid blue; */
 }
 
@@ -81,8 +81,8 @@ header {
 }
 
 .login {
-    width: 8rem;
-    height: 3rem;
+    width: 4.5rem;
+    height: 2rem;
     font-size: 1rem;
 }
 
@@ -117,7 +117,6 @@ main {
 
 /* FORM */
 #form-container {
-    border: 4px solid brown;
     position: absolute; 
     justify-content: center;
     top: 1;
@@ -151,6 +150,7 @@ form {
 #read-status {
     height: 1rem;
     accent-color: #401e4b;
+    grid-row: 4/5;
 }
 
 input, .submit, #close-form {
@@ -162,12 +162,13 @@ input, .submit, #close-form {
 
 /* CARD CONTAINER */
 #card-container {
+    width: 100%;
     grid-row: 2/4;
     /* border: 3px solid red; */
     display: grid;
     justify-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 295px));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  
 }
 
 .cards {
@@ -178,6 +179,7 @@ input, .submit, #close-form {
     width: 210px;
     display: grid;
     gap: .5rem;
+    box-shadow: 2px 2px 15px #401e4b;
 }
 
 button{
