@@ -175,7 +175,7 @@ input, .submit, #close-form {
     box-shadow: 2px 2px 15px #401e4b;
 }
 
-button{
+button {
     font-size: 1rem;
     border: none;
 }
@@ -234,7 +234,6 @@ input, button {
 input:focus {
     outline: none;
 }
-
 
 /* BORDER STYLING - RADIUS */
 #form-container,
