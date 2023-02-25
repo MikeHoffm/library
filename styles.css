@@ -23,25 +23,31 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -49,9 +55,6 @@ table {
 
 *, h1 {
     font-family: 'Lexend Deca', sans-serif;
-}
-
-a {
     text-decoration: none;
 }
 
@@ -59,13 +62,11 @@ a {
 body {
     min-height: 100vh;
     display: grid;
-    grid-template-rows: .13fr 1fr .2fr;
-   /*  border: 3px solid blue; */
+    grid-template-rows: 5rem 1fr .5fr;
 }
 
 /* HEADER LAYOUT */
 header {
-    /* border: 4px solid green; */
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -88,9 +89,8 @@ header {
 
 /* MAIN LAYOUT */
 main {
-    /* border: 5px solid orange; */
     display: grid;
-    grid-template-rows: .1fr 1fr;
+    grid-template-rows: 4rem 1fr;
     gap: 1rem;
     padding: 1rem;
     grid-row: 2/4;
@@ -99,7 +99,6 @@ main {
 
 /* BUTTON FIELD */
 .button-field {
-    /* border:3px solid green; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -108,9 +107,8 @@ main {
 #new-book {
     border: none;
     border-radius: 16px;
-    width: clamp(150px, 20%, 250px);
+    width: 200px;
     height: 60px;
-    background-color: blueviolet;
     color: white;
     font-size: 1em;
 }
@@ -119,7 +117,7 @@ main {
 #form-container {
     position: absolute; 
     justify-content: center;
-    top: 1;
+    top: 10%;
     left: 0;
     right: 0;
     margin: auto;
@@ -129,17 +127,12 @@ main {
     box-shadow: 0 0 0 100vw hsla(278, 48%, 5%, 0.4);
 }
 
-#form-container > h3 {
-    border: 3px solid black;}
-
 #close-form {
-    background-color: red;
     height: 2rem;
     width: 5rem;                   
 }
 
 form {
-   /*  border: 3px solid green; */
     display: grid;
     gap: 10px;
     justify-items: center;
@@ -164,10 +157,10 @@ input, .submit, #close-form {
 #card-container {
     width: 100%;
     grid-row: 2/4;
-    /* border: 3px solid red; */
     display: grid;
     justify-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
   
 }
 
@@ -175,8 +168,8 @@ input, .submit, #close-form {
     border: 3px solid #401e4b;;
     padding: 10px;
     text-align: center;
-    height: 200px;
-    width: 210px;
+    height: 230px;
+    width: 250px;
     display: grid;
     gap: .5rem;
     box-shadow: 2px 2px 15px #401e4b;
@@ -187,23 +180,21 @@ button{
     border: none;
 }
 
-
 /* FOOTER */
 footer {
-  /*   border: 5px solid purple; */
     display: flex;
     justify-content: center;
     align-items: center;
     grid-row: 4/5;
-    padding: 1em;
+    padding: 3em;
 }
 
 .footer-link {
     font-weight: bolder;
     color: #4A4063;
 }
-/* COLOR STYLING */
 
+/* COLOR STYLING */
 header {
     background-color: #4A4063;
     color: white;
@@ -245,9 +236,7 @@ input:focus {
 }
 
 
-
 /* BORDER STYLING - RADIUS */
-
 #form-container,
 input,
 .cards,
