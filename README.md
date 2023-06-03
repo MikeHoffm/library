@@ -1,6 +1,8 @@
 # library
 
-TOP Library Project
+TOP Library Project - Refactored
+
+- Refactored to use JS Classes in place of standard constructors
 
 This project is JS focused. Users can enter books to their personal library, remove them after displaying them, & toggle their read status.
 

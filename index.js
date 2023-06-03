@@ -16,22 +16,23 @@ function removeForm() {
 // Start page with form hidden
 removeForm();
 
-// Object Constructor Function for Books
-function Book(bookTitle, bookAuthor, bookPages, readStatus) {
-  this.title = bookTitle;
-  this.author = bookAuthor;
-  this.pages = bookPages;
-  this.read = readStatus;
-}
-
-// TOGGLE FUNCTION
-Book.prototype.toggleStatus = function () {
-  if (this.read === true) {
-    this.read = false;
-  } else {
-    this.read = true;
+// Constructs Book Objects, with the toggleStatus functionality set on the Book prototype
+class Book {
+  constructor(bookTitle, bookAuthor, bookPages, readStatus) {
+    this.title = bookTitle;
+    this.author = bookAuthor;
+    this.pages = bookPages;
+    this.read = readStatus;
   }
-};
+
+  toggleStatus = () => {
+    if (this.read === true) {
+      this.read = false;
+    } else {
+      this.read = true;
+    }
+  };
+}
 
 // Collect user input from form
 // Push through Object constructor & store in myLibrary
